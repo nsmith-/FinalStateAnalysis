@@ -785,6 +785,32 @@ const double PATFinalState::getRecoilWithMetSignificance() const {
   return fshelpers::xySignficance(getDaughtersRecoilWithMet(), event_->metCovariance());
 }
 
+const float PATFinalState::getReducedMET(const std::string& jetFilter) const {
+  // reduced MET definition can be found in AN2012_148
+  math::XYZVector transverseAxis = getDaughtersRecoil().Unit();
+  // longitudinal := "rotation(pi/2) x transverse", assuming that means rotate transverse by pi/2
+  math::XYZVector longitudinalAxis(-transverseAxis.Y(), transverseAxis.X(), 0.);
+
+  // these can be simplified, but for clarity,
+  double candidateProjT = getDaughtersRecoil().Dot(transverseAxis);
+  double candidateProjL = getDaughtersRecoil().Dot(longitudinalAxis);
+
+  double jetProjT = 0.;
+  double jetProjL = 0.;
+  std::vector<const reco::Candidate*> jets = this->vetoJets(0., jetFilter);
+  for(std::vector<const reco::Candidate*>::const_iterator jet = jets.begin(); jet != jets.end(); ++jet){
+    math::XYZVector jetPt((*jet)->px(), (*jet)->py(), 0.);
+    jetProjT += jetPt.Dot(transverseAxis);
+    jetProjL += jetPt.Dot(longitudinalAxis);
+  }
+
+  double METProjT = getDaughtersRecoilWithMet().Dot(transverseAxis);
+  double METProjL = getDaughtersRecoilWithMet().Dot(longitudinalAxis);
+
+  double Ct = std::min( fabs(candidateProjT-METProjT), fabs(candidateProjT+jetProjT) );
+  double Cl = std::min( fabs(candidateProjL-METProjL), fabs(candidateProjL+jetProjL) );
+  return sqrt(Ct*Ct+Cl*Cl);
+}
 
 const math::XYZTLorentzVector
 PATFinalState::getUserLorentzVector(size_t i,const std::string& name) const {

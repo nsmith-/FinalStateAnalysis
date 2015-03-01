@@ -213,6 +213,14 @@ def make_ntuple(*legs, **kwargs):
             templates.topology.vbf
         )
 
+    # If two legs we might want reduced MET
+    if len(legs) == 2:
+      ntuple_config = PSet(
+          ntuple_config,
+          templates.topology.reduced_met
+      )
+
+
     # Optionally apply extra branches in kwargs
     if 'branches' in kwargs:
         for branch, value in kwargs['branches'].iteritems():

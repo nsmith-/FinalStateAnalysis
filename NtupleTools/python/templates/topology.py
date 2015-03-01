@@ -72,6 +72,11 @@ finalstate = PSet(
     MassErrord4 = 'userFloat("cand_dM_3")'
 )
 
+reduced_met = PSet(
+    # string is cut on jets used to calc reduced met
+    reducedMET = 'getReducedMET("pt > 10 & abs(eta) < 5 & userFloat(\'idLoose\')")'
+)
+
 # Branches for identifying Z bosons using a pair of objects
 zboson = PSet(
     # Absolute distance to Z mass.  If SS, returns 1000.  The smaller the more

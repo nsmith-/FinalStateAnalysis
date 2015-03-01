@@ -290,6 +290,11 @@ class PATFinalState : public pat::PATObject<reco::LeafCandidate> {
     const reco::Candidate::Vector getDaughtersRecoilWithMet() const;
     const double   getRecoilWithMetSignificance() const;
 
+    // Get reducedMET with respect to jet collection filtered
+    // by cut expression.
+    // reduced MET definition can be found in AN2012_148
+    const float getReducedMET(const std::string& jetFilter) const;
+
     // Things to get LorentzVectors and other complex datatypes
     // out of objects
     const math::XYZTLorentzVector getUserLorentzVector(size_t i,
