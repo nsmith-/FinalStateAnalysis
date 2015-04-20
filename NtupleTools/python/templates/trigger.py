@@ -16,8 +16,14 @@ _trig_template = PSet(
     namePrescale = 'evt.hltPrescale("paths")',
 )
 
-singlemu = _trig_template.replace(
-    name='singleMu', paths=r'HLT_Mu15_v\\d+, HLT_Mu24_v\\d+, HLT_Mu30_v\\d+')
+singlemu = PSet(
+    _trig_template.replace(
+        name='singleMu', 
+        paths=r'HLT_Mu15_v\\d+, HLT_Mu24_v\\d+, HLT_Mu30_v\\d+'),
+    _trig_template.replace(
+        name='singleMuZHinv', 
+        paths=r'HLT_IsoMu24_eta2p1_v\\d+')
+)
 
 isomu = _trig_template.replace(name='isoMu',
     paths=r'HLT_IsoMu17_v\\d+, HLT_IsoMu20_v\\d+, '
@@ -33,6 +39,9 @@ doublemu = PSet(
         name='doubleMu',
         paths=r'HLT_DoubleMu7_v\\d+,HLT_Mu13_Mu8_v\\d+,HLT_Mu17_Mu8_v\\d+'),
     _trig_template.replace(
+        name='doubleMuZHinv',
+        paths=r'HLT_Mu17_Mu8_v\\d+,HLT_Mu17_TkMu8_v\\d+'),
+    _trig_template.replace(
         name='doubleMuTrk',
         paths=r'HLT_DoubleMu7_v\\d+,HLT_Mu13_Mu8_v\\d+,HLT_Mu17_TrkMu8_v\\d+'),
      _trig_template.replace(
@@ -44,6 +53,10 @@ singlee = PSet(
     _trig_template.replace(
     name='singleE',
     paths=r'HLT_Ele27_WP80_v\\d+,HLT_Ele27_CaloIdVT_CaloIsoT_TrkIdT_TrkIsoT_v\\d+,HLT_Ele32_CaloIdVT_CaloIsoT_TrkIdT_TrkIsoT_v\\d+'
+    ),
+    _trig_template.replace(
+    name='singleEZHinv',
+    paths=r'HLT_Ele27_WP80_v\\d+'
     ),
     _trig_template.replace(
     name='singleEPFMT',
