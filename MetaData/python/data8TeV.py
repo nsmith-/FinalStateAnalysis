@@ -123,6 +123,14 @@ datadefs = {
    # AN2012-123
    'xsec': 123.9,
        },
+     'ZG_Inclusive_v2' : {
+   'analyses': [''],
+   'datasetpath': '/ZG_Inclusive_8TeV-madgraph_v2/Summer12_DR53X-PU_S10_START53_V7A-v1/AODSIM',
+   'pu': 'S10',
+   'calibrationTarget': 'Summer12',
+   # AN2012-123
+   'xsec': 123.9,
+       },
     'ZH_ZToLL_HToInv_M-125' : {
    'analyses': [''],
    'datasetpath': '/ZH_ZToLL_HToInv_M-125_8TeV-pythia6/Summer12_DR53X-PU_S10_START53_V7A-v1/AODSIM',
