@@ -51,6 +51,7 @@ pairs = PSet(
     object1_object2_CosThetaStar = 'abs(subcand({object1_idx}, {object2_idx}).get.daughterCosThetaStar(0))',
 
     #Pairs + MET
+    object1_object2_ToMETDPhi = 'deltaPhi(subcand({object1_idx}, {object2_idx}).get.phi, evt.met("pfmet").phi)',
     object1_object2_ToMETDPhi_Ty1 = 'deltaPhi(subcand({object1_idx}, {object2_idx}).get.phi, evt.met("pfmet").userCand("type1").phi)',
     object1_object2_ToMETDPhi_jes_plus = 'deltaPhi(subcand({object1_idx}, {object2_idx}).get.phi, evt.met("pfmet").userCand("jes+").phi)',
     object1_object2_ToMETDPhi_jes_minus = 'deltaPhi(subcand({object1_idx}, {object2_idx}).get.phi, evt.met("pfmet").userCand("jes-").phi)', 
@@ -69,7 +70,8 @@ finalstate = PSet(
     MassErrord1 = 'userFloat("cand_dM_0")',
     MassErrord2 = 'userFloat("cand_dM_1")',
     MassErrord3 = 'userFloat("cand_dM_2")',
-    MassErrord4 = 'userFloat("cand_dM_3")'
+    MassErrord4 = 'userFloat("cand_dM_3")',
+    mtToMET = 'mtToMET("pfmet", "", 1)'
 )
 
 reduced_met = PSet(

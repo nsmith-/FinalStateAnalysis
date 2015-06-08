@@ -398,6 +398,10 @@ PATFinalState::mt(int i, int j) const {
   return mt(i, "", j, "");
 }
 
+double PATFinalState::mtToMET(const std::string& metName, const std::string& metTag, const int applyPhiCorr) const {
+  return fshelpers::transverseMass(p4(), evt()->met4vector(metName, metTag, applyPhiCorr));
+}
+
 double PATFinalState::mtMET(int i, const std::string& tag,
     const std::string& metTag) const {
   if (metTag != "") {

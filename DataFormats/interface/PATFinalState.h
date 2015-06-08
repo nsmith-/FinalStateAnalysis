@@ -165,6 +165,9 @@ class PATFinalState : public pat::PATObject<reco::LeafCandidate> {
         const std::string& metName, const std::string& metTag_type1, const std::string& metTag_ues,
         const int applyPhiCorr) const;
 
+    // MT between this and MET
+    double mtToMET(const std::string& metName, const std::string& metTag, const int applyPhiCorr) const;
+
     double resetPhi( 
 	const std::string& metName, const std::string& metTag_type1, const std::string& metTag_ues,
         const int applyPhiCorr) const ;
