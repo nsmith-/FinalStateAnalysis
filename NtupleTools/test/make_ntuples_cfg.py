@@ -117,6 +117,10 @@ process.maxEvents = cms.untracked.PSet(
 
 process.schedule = cms.Schedule()
 
+if 'DYJets' in options.inputFiles[0] :
+    print 'DYJets sample ==> Adding GenLeptonFSRFilter to process'
+    process.LeptonFSRVeto = cms.EDFilter("GenLeptonFSRFilter")
+
 # Check if we want to rerun creation of the FSA objects
 if options.rerunFSA:
     print "Rebuilding FS composite objects"
