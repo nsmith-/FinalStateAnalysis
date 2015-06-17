@@ -30,6 +30,8 @@
 
 #include "FWCore/ParameterSet/interface/ParameterSet.h"
 
+#include "DataFormats/Math/interface/deltaR.h"
+
 #include "DataFormats/HepMCCandidate/interface/GenParticle.h"
 
 //
@@ -98,14 +100,42 @@ GenLeptonFSRFilter::filter(edm::Event& iEvent, const edm::EventSetup& iSetup)
    Handle<reco::GenParticleCollection> genParticles;
    iEvent.getByLabel(GenParticleTag_, genParticles);
 
-   for ( auto& genParticle : *genParticles ) {
+   std::vector<reco::GenParticle> leptons;
+   for ( const auto& particle : *genParticles )
+   {
+      if ( particle.status() == 1 
+            && ( abs(particle.pdgId()) == 11 || abs(particle.pdgId()) == 13 || abs(particle.pdgId()) == 15 )
+         )
+      {
+         leptons.push_back(particle);
+      }
+   }
+   if ( leptons.size() == 0 ) return true;
+
+   for ( const auto& genParticle : *genParticles )
+   {
+      int absmom = 0;
+      int absgmom = absmom;
+      if ( genParticle.mother(0) != nullptr )
+      {
+         absmom = genParticle.mother(0)->pdgId();
+         if ( genParticle.mother(0)->mother(0) != nullptr )
+            absgmom = genParticle.mother(0)->mother(0)->pdgId();
+      }
       if ( genParticle.status() == 1 
             && genParticle.pdgId() == 22 
-            && (abs(genParticle.mother(0)->pdgId()) == 11 || abs(genParticle.mother(0)->pdgId()) == 13) 
+            && absmom > 0
+            && ( absmom < 7 || absmom == 11 || absmom == 13 || absmom == 15 )
+            && ( absgmom == absmom || absgmom == 22 || absgmom == 23 ) 
             && genParticle.pt() > 10.
-            ) {
-         std::cout << "killing a gamma pt = " << genParticle.pt() << std::endl;
-         return false;
+         )
+      {
+         double smallestdR = reco::deltaR(genParticle, leptons[0]);
+         for ( auto& lepton : leptons ) 
+            if ( reco::deltaR(genParticle, lepton) < smallestdR )
+               smallestdR = reco::deltaR(genParticle, lepton);
+         
+         if ( smallestdR > 0.4 ) return false;
       }
    }
 
