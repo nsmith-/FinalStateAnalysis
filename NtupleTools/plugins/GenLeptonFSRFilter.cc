@@ -101,6 +101,7 @@ GenLeptonFSRFilter::filter(edm::Event& iEvent, const edm::EventSetup& iSetup)
    iEvent.getByLabel(GenParticleTag_, genParticles);
 
    std::vector<reco::GenParticle> leptons;
+   std::vector<reco::GenParticle> radiatedPhotons;
    for ( const auto& particle : *genParticles )
    {
       if ( particle.status() == 1 
@@ -109,33 +110,48 @@ GenLeptonFSRFilter::filter(edm::Event& iEvent, const edm::EventSetup& iSetup)
       {
          leptons.push_back(particle);
       }
-   }
-   if ( leptons.size() == 0 ) return true;
-
-   for ( const auto& genParticle : *genParticles )
-   {
-      int absmom = 0;
-      int absgmom = absmom;
-      if ( genParticle.mother(0) != nullptr )
-      {
-         absmom = genParticle.mother(0)->pdgId();
-         if ( genParticle.mother(0)->mother(0) != nullptr )
-            absgmom = genParticle.mother(0)->mother(0)->pdgId();
-      }
-      if ( genParticle.status() == 1 
-            && genParticle.pdgId() == 22 
-            && absmom > 0
-            && ( absmom < 7 || absmom == 11 || absmom == 13 || absmom == 15 )
-            && ( absgmom == absmom || absgmom == 22 || absgmom == 23 ) 
-            && genParticle.pt() > 10.
+      else if ( particle.status() == 1
+            && particle.pdgId() == 22 and abs(particle.mother(0)->pdgId()) < 25
          )
       {
-         double smallestdR = reco::deltaR(genParticle, leptons[0]);
+         radiatedPhotons.push_back(particle);
+      }
+   }
+   if ( leptons.size() == 0 || radiatedPhotons.size() == 0 ) return true;
+
+   auto fsrDefinition = [](int mother, int grandmother) {
+      if ( (abs(mother)==11 || abs(mother)==13 || abs(mother)==15 || abs(mother)==22)
+          && (abs(grandmother)==22 || abs(grandmother)==23 || grandmother==mother) )
+      {
+         return true;
+      }
+      return false;
+   };
+
+   auto isrDefinition = [](int mother, int grandmother) {
+      if ( (abs(mother)<7 || abs(mother)==21)
+          || ( abs(mother)==22 && (abs(grandmother)<7 || abs(grandmother)==21) ) )
+      {
+         return true;
+      }
+      return false;
+   };
+
+   for ( auto& photon : radiatedPhotons )
+   {
+      int mother = photon.mother(0)->pdgId();
+      int grandmother = 0;
+      if ( photon.mother(0)->mother(0) != nullptr )
+         grandmother = photon.mother(0)->mother(0)->pdgId();
+
+      if ( fsrDefinition(mother, grandmother) || isrDefinition(mother, grandmother) )
+      {
+         double smallestdR = reco::deltaR(photon, leptons[0]);
          for ( auto& lepton : leptons ) 
-            if ( reco::deltaR(genParticle, lepton) < smallestdR )
-               smallestdR = reco::deltaR(genParticle, lepton);
+            if ( reco::deltaR(photon, lepton) < smallestdR )
+               smallestdR = reco::deltaR(photon, lepton);
          
-         if ( smallestdR > 0.4 ) return false;
+         if ( photon.pt() > 10 && smallestdR > 0.4 ) return false;
       }
    }
 

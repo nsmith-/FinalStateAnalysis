@@ -145,6 +145,8 @@ def add_ntuple(name, analyzer, process, schedule, event_view=False):
     p = cms.Path(analyzer)
     if hasattr(process, 'LeptonFSRVeto') :
         p = cms.Path(process.LeptonFSRVeto*analyzer)
+    if hasattr(process, 'InvertedLeptonFSRVeto') :
+        p = cms.Path(~process.InvertedLeptonFSRVeto*analyzer)
     setattr(process, name + 'path', p)
     schedule.append(p)
 

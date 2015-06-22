@@ -120,6 +120,9 @@ process.schedule = cms.Schedule()
 if 'DYJets' in options.inputFiles[0] :
     print 'DYJets sample ==> Adding GenLeptonFSRFilter to process'
     process.LeptonFSRVeto = cms.EDFilter("GenLeptonFSRFilter")
+elif 'ZG_Inclusive' in options.inputFiles[0] :
+    print 'Z+gamma sample ==> Adding ~GenLeptonFSRFilter to process'
+    process.InvertedLeptonFSRVeto = cms.EDFilter("GenLeptonFSRFilter")
 
 # Check if we want to rerun creation of the FSA objects
 if options.rerunFSA:
