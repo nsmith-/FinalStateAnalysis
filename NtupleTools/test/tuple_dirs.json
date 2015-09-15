@@ -15,9 +15,7 @@
     "DYJetsToLL_M-50_TuneZ2Star_8TeV-madgraph-tarball": "/hdfs/store/user/dntaylor/DYJetsToLL_M-50_TuneZ2Star_8TeV-madgraph-tarball/Summer12_DR53X-PU_S10_START53_V7A-v1/AODSIM/Fall2014PATTuples_V1", 
     "ZZJetsTo2L2Nu_TuneZ2star_8TeV-madgraph-tauola": "/hdfs/store/user/nsmith/ZZJetsTo2L2Nu_TuneZ2star_8TeV-madgraph-tauola/Summer12_DR53X-PU_S10_START53_V7A-v3/AODSIM/ZHinv2015", 
     "WGToLNuG": "/hdfs/store/user/nsmith/WGToLNuG_TuneZ2star_8TeV-madgraph-tauola/Summer12_DR53X-PU_S10_START53_V7A-v1/AODSIM/ZHinv2015", 
-    "T_tW-channel-DR_TuneZ2star_8TeV-powheg-tauola": "/hdfs/store/user/mcepeda/T_tW-channel-DR_TuneZ2star_8TeV-powheg-tauola/Summer12_DR53X-PU_S10_START53_V7A-v1/AODSIM/Spring2014PATTuples2", 
     "data_SingleMu_Run2012B_22Jan2013_v1": "/hdfs/store/user/tperry/SingleMu/Run2012B-22Jan2013-v1/AOD/Spring2014PATTuples_v3", 
-    "Tbar_tW-channel-DR_TuneZ2star_8TeV-powheg-tauola": "/hdfs/store/user/mcepeda/Tbar_tW-channel-DR_TuneZ2star_8TeV-powheg-tauola/Summer12_DR53X-PU_S10_START53_V7A-v1/AODSIM/Spring2014PATTuples2", 
     "data_DoubleMuParked_Run2012C_22Jan2013_v1": "/hdfs/store/user/belknap/DoubleMuParked/Run2012C-22Jan2013-v1/AOD/Spring2014PATTuples_V2", 
     "ZG_Inclusive_v2": "/hdfs/store/user/nsmith/ZG_Inclusive_8TeV-madgraph_v2/Summer12_DR53X-PU_S10_START53_V7A-v1/AODSIM/ZHinv2015", 
     "data_DoubleElectron_Run2012B_22Jan2013_v1": "/hdfs/store/user/belknap/DoubleElectron/Run2012B-22Jan2013-v1/AOD/Spring2014PATTuples_V2", 
@@ -27,5 +25,11 @@
     "data_DoubleElectron_Run2012C_22Jan2013_v1": "/hdfs/store/user/belknap/DoubleElectron/Run2012C-22Jan2013-v1/AOD/Spring2014PATTuples_V2", 
     "Wplus4Jets_madgraph": "/hdfs/store/user/tperry/W4Jet_p1_s-skimpattuple_cfg", 
     "data_SingleMu_Run2012A_22Jan2013_v1": "/hdfs/store/user/tperry/SingleMu/Run2012A-22Jan2013-v1/AOD/Spring2014PATTuples_v3", 
-    "data_SingleMu_Run2012C_22Jan2013_v1": "/hdfs/store/user/tperry/SingleMu/Run2012C-22Jan2013-v1/AOD/Spring2014PATTuples_v3"
+    "data_SingleMu_Run2012C_22Jan2013_v1": "/hdfs/store/user/tperry/SingleMu/Run2012C-22Jan2013-v1/AOD/Spring2014PATTuples_v3",
+    "T_tW-channel-DR_TuneZ2star_8TeV-powheg-tauola": "/hdfs/store/user/mcepeda/T_tW-channel-DR_TuneZ2star_8TeV-powheg-tauola/Summer12_DR53X-PU_S10_START53_V7A-v1/AODSIM/Spring2014PATTuples2", 
+    "Tbar_tW-channel-DR_TuneZ2star_8TeV-powheg-tauola": "/hdfs/store/user/mcepeda/Tbar_tW-channel-DR_TuneZ2star_8TeV-powheg-tauola/Summer12_DR53X-PU_S10_START53_V7A-v1/AODSIM/Spring2014PATTuples2", 
+    "T_s-channel_TuneZ2star_8TeV-powheg-tauola": "/hdfs/store/user/mcepeda/T_s-channel_TuneZ2star_8TeV-powheg-tauola/Summer12_DR53X-PU_S10_START53_V7A-v1/AODSIM/Spring2014PATTuples2/",
+    "Tbar_s-channel_TuneZ2star_8TeV-powheg-tauola": "/hdfs/store/user/mcepeda/Tbar_s-channel_TuneZ2star_8TeV-powheg-tauola/Summer12_DR53X-PU_S10_START53_V7A-v1/AODSIM/Spring2014PATTuples2/",
+    "TToLeptons_t-channel_8TeV-powheg-tauola": "/hdfs/store/user/mcepeda/TToLeptons_t-channel_8TeV-powheg-tauola/Summer12_DR53X-PU_S10_START53_V7A-v1/AODSIM/Spring2014PATTuples2/",
+    "TBarToLeptons_t-channel_8TeV-powheg-tauola": "/hdfs/store/user/mcepeda/TBarToLeptons_t-channel_8TeV-powheg-tauola/Summer12_DR53X-PU_S10_START53_V7A-v1/AODSIM/Spring2014PATTuples2/"
 }

@@ -48,8 +48,12 @@ met = PSet(
     #type1_pfMetPhi = 'evt.met("pfmet").userCand("type1").phi',
     pfMetEt  = 'evt.met4vector("pfmet","",1).Et',
     pfMetPhi = 'evt.met4vector("pfmet","",1).phi',
+    pfMetNoPhiCorrEt  = 'evt.met4vector("pfmet","",0).Et',
+    pfMetNoPhiCorrPhi = 'evt.met4vector("pfmet","",0).phi',
     type1_pfMetEt  = 'evt.met4vector("pfmet","type1",1).Et', #1 --> Apply phi correction
     type1_pfMetPhi = 'evt.met4vector("pfmet","type1",1).phi',
+    type1_pfMetNoPhiCorrEt  = 'evt.met4vector("pfmet","type1",0).Et',
+    type1_pfMetNoPhiCorrPhi = 'evt.met4vector("pfmet","type1",0).phi',
     #systematics
     pfMet_mes_Et   = 'evt.met4vector("pfmet","mes+", 1).Et',
     pfMet_tes_Et   = 'evt.met4vector("pfmet","tes+", 1).Et',

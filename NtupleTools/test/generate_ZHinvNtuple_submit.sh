@@ -12,6 +12,10 @@ submit_job.py ZHinvNtuples \
     "TTZJets" \
     "T_tW-channel-DR_TuneZ2star_8TeV-powheg-tauola" \
     "Tbar_tW-channel-DR_TuneZ2star_8TeV-powheg-tauola" \
+    "T_s-channel_TuneZ2star_8TeV-powheg-tauola" \
+    "Tbar_s-channel_TuneZ2star_8TeV-powheg-tauola" \
+    "TToLeptons_t-channel_8TeV-powheg-tauola" \
+    "TBarToLeptons_t-channel_8TeV-powheg-tauola" \
     "WGToLNuG" \
     "WWJetsTo2L2Nu_TuneZ2star_8TeV-madgraph-tauola" \
     "WZJetsTo3LNu_TuneZ2_8TeV-madgraph-tauola" \
